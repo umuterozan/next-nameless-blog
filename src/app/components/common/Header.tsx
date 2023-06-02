@@ -4,10 +4,10 @@ export default function Header() {
     return (
         <header className="h-16">
             <div className="h-full flex items-center justify-between container mx-auto">
-                <div className="text-[#444bff] py-2 px-4 rounded">
-                    <Link href="/">nameless</Link>
+                <div className="text-[#444bff]">
+                    <Link className="font-bold" href="/">nameless</Link>
                 </div>
-                <div className="flex items-center gap-x-10">
+                <div className="flex items-center gap-x-16">
                     <Link href="/">Home</Link>
                     <Link href="/">Our story</Link>
                     <Link href="/">Blog</Link>
