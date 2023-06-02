@@ -1,0 +1,16 @@
+header component
+
+hero section component
+
+categories bar component
+
+login & signup page
+
+prisma configuration & schema (
+    users, categories, posts (
+        users (id, username, password, createdAt, updatedAt),
+        categories (id, name, createdAt, updatedAt),
+        posts (id, title, body, readTime, categoryId, userId, createdAt, updatedAt)
+    )
+)
+
