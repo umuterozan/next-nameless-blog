@@ -9,3 +9,33 @@ datasource db {
   provider = "postgresql"
   url      = env("DATABASE_URL")
 }
+
+model User {
+  id        Int      @id @default(autoincrement())
+  username  String   @db.VarChar(50)
+  password  String   @db.VarChar(255)
+  createdAt DateTime @default(now())
+  updatedAt DateTime @updatedAt
+  Post      Post[]
+}
+
+model Category {
+  id        Int      @id @default(autoincrement())
+  name      String   @db.VarChar(50)
+  createdAt DateTime @default(now())
+  updatedAt DateTime @updatedAt
+  Post      Post[]
+}
+
+model Post {
+  id         Int       @id @default(autoincrement())
+  title      String    @db.VarChar(50)
+  body       String    @db.Text
+  readTime   DateTime?
+  category   Category  @relation(fields: [categoryId], references: [id])
+  user       User      @relation(fields: [userId], references: [id])
+  categoryId Int
+  userId     Int
+  createdAt  DateTime  @default(now())
+  updatedAt  DateTime  @updatedAt
+}
