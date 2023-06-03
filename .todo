@@ -4,7 +4,7 @@ hero section component ✔
 
 categories bar component ✔
 
-login & signup page
+login & signup page ⏰
 
 prisma configuration & schema (
     users, categories, posts (
@@ -12,5 +12,5 @@ prisma configuration & schema (
         categories (id, name, createdAt, updatedAt),
         posts (id, title, body, readTime, categoryId, userId, createdAt, updatedAt)
     )
-)
+) ⏰
 
