@@ -24,11 +24,11 @@ export default async function SignupPage() {
             <form className="max-w-sm mx-auto" action={createUser}>
                 <div className="flex flex-col gap-y-2 mb-6">
                     <label className="text-sm" htmlFor="username">Username</label>
-                    <input className="py-2 px-4 border-2 border-gray-200 rounded" placeholder="Username" type="text" name="username" id="username" />
+                    <input className="py-2 px-4 border-2 border-gray-200 rounded" placeholder="Username" type="text" name="username" id="username" required />
                 </div>
                 <div className="flex flex-col gap-y-2 mb-6">
                     <label className="text-sm" htmlFor="password">Password</label>
-                    <input className="py-2 px-4 border-2 border-gray-200 rounded" placeholder="Password" type="password" name="password" id="password" />
+                    <input className="py-2 px-4 border-2 border-gray-200 rounded" placeholder="Password" type="password" name="password" id="password" required />
                 </div>
                 <button className="bg-[#444bff] py-2 px-4 rounded text-white w-full" type="submit">Sign up!</button>
             </form>
