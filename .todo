@@ -12,5 +12,5 @@ prisma configuration & schema (
         categories (id, name, createdAt, updatedAt),
         posts (id, title, body, readTime, categoryId, userId, createdAt, updatedAt)
     )
-) ⏰
+) ✔
 
