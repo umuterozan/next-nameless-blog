@@ -31,7 +31,7 @@ model Post {
   id         Int       @id @default(autoincrement())
   title      String    @db.VarChar(50)
   body       String    @db.Text
-  readTime   DateTime?
+  readTime   String    @db.VarChar(50)
   category   Category  @relation(fields: [categoryId], references: [id])
   user       User      @relation(fields: [userId], references: [id])
   categoryId Int
