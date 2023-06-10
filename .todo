@@ -4,7 +4,7 @@ hero section component ✔
 
 categories bar component ✔
 
-login & signup page ⏰
+login & signup page ✔
 
 prisma configuration & schema (
     users, categories, posts (
@@ -14,3 +14,6 @@ prisma configuration & schema (
     )
 ) ✔
 
+change the Post->readTime column from DateTime to String in the schema ✔
+
+new post page ⏰
