@@ -6,19 +6,6 @@ import CredentialsProvider from "next-auth/providers/credentials";
 export const authOptions: NextAuthOptions = {
     providers: [
         CredentialsProvider({
-            name: "Credentials",
-            credentials: {
-                username: {
-                    label: "Username",
-                    type: "text",
-                    placeholder: "Username",
-                },
-                password: {
-                    label: "Password",
-                    type: "password",
-                    placeholder: "Password",
-                },
-            },
             async authorize(credentials) {
                 const user = await prisma.user.findFirst({
                     where: {
@@ -28,17 +15,31 @@ export const authOptions: NextAuthOptions = {
 
                 if (user && credentials?.password === user.password) {
                     const { password, ...userWithoutPass } = user;
+
                     return userWithoutPass;
                 }
-                
-                return null
+
+                return null;
             },
         }),
     ],
 
     pages: {
         signIn: "/login",
-    }
+    },
+
+    callbacks: {
+        async session({ session, token }) {
+            session.user = token.user;
+            return session;
+        },
+        async jwt({ token, user }) {
+            if (user) {
+                token.user = user;
+            }
+            return token;
+        },
+    },
 };
 
 const handler = NextAuth(authOptions);

@@ -1,20 +1,19 @@
 import { prisma } from '@/db';
-import { User } from '@prisma/client';
+import { Category } from '@prisma/client';
 import { revalidatePath } from 'next/cache';
 import React from 'react';
 
 // list of users
-async function getUsers() {
-	return await prisma.user.findMany();
+async function getCategories() {
+	return await prisma.category.findMany();
 }
 
 // create a new user
-async function createUser(data: FormData) {
+async function createCategory(data: FormData) {
 	'use server';
-	await prisma.user.create({
+	await prisma.category.create({
 		data: {
-			username: data.get('username') as string,
-			password: data.get('password') as string,
+			name: data.get('name') as string,
 		},
 	});
 
@@ -22,31 +21,24 @@ async function createUser(data: FormData) {
 }
 
 export default async function Page() {
-	const users: User[] = await getUsers();
+	const categories: Category[] = await getCategories();
 
 	return (
 		<div className="p-6">
-			{JSON.stringify(users)}
-			<form action={createUser}>
+			{JSON.stringify(categories)}
+			<form action={createCategory}>
 				<input
 					type="text"
 					className="border border-gray-400 bg-gray-300 rounded-md"
-					name="username"
-					placeholder="Kullanıcı Adı"
-				/>
-				<br />
-				<input
-					type="password"
-					className="border border-gray-400 bg-gray-300 rounded-md"
-					name="password"
-					placeholder="Şifre"
+					name="name"
+					placeholder="Kategori Adı"
 				/>
 				<br />
 				<button
 					type="submit"
 					className="rounded-md bg-indigo-600 text-white text-sm w-32"
 				>
-					Kayıt Ol
+					Kategori oluştur
 				</button>
 			</form>
 		</div>
