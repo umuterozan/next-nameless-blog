@@ -19,7 +19,7 @@ async function getPosts() {
 
 export default async function Home() {
     const posts: Post[] = await getPosts()
-    console.log(posts)
+    
     return (
         <>
             <HeroSection />
