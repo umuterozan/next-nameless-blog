@@ -1,7 +1,11 @@
 import { Post } from "@prisma/client";
 import PostItem from "./PostItem";
 
-export default function PostList({ posts }: { posts: Post[] }) {
+const wait = (ms: number) => new Promise((resolve) => setTimeout(resolve, ms))
+
+export default async function PostList({ posts }: { posts: Post[] }) {
+    await wait(1500)
+
     return (
         <section className="container mx-auto mt-10 grid grid-cols-3 gap-10">
             {posts.map((post) => (
