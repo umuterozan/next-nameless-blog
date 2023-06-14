@@ -12,7 +12,7 @@ async function getCategories() {
     return await prisma.category.findMany()
 }
 
-async function getPosts() {
+async function getPosts(categoryName: string) {
     return await prisma.post.findMany({
         include: {
             category: {
@@ -21,16 +21,17 @@ async function getPosts() {
                 }
             }
         },
+        where: {
+            category: {
+                name: categoryName
+            }
+        }
     })
 }
 
 export default async function Home({ searchParams }: PageProps) {
     const categories: Category[] = await getCategories()
-    let posts: Post[] = await getPosts()
-
-    if (searchParams?.category) {
-        posts = posts.filter((post) => post?.category?.name === searchParams?.category)
-    }
+    const posts: Post[] = await getPosts(searchParams?.category)
 
     return (
         <>
